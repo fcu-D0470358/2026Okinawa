@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>員工旅遊-沖繩</title>
+    <title>沖繩自由行 2026</title>
+    <meta name="theme-color" content="#F2F2F7">
+    
+    <!-- PWA 必備設定 -->
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/6100/6100486.png">
-    <meta name="theme-color" content="#F2F2F7">
+    
     <style>
         /* iOS 原生極簡風格 (沖繩海濱藍) */
         :root {
@@ -15,9 +18,6 @@
             --text-main: #1C1C1E;
             --text-muted: #8E8E93;
             --accent-color: #007AFF; /* 沖繩專屬清爽藍色 */
-            --tag-food: #FF9500;
-            --tag-buy: #AF52DE;
-            --tag-order: #34C759;
             --radius: 20px;
         }
 
@@ -88,23 +88,27 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 6px;
         }
 
-        .info-alert {
-            background-color: #FFF0F0; color: #FF3B30; padding: 10px 12px;
-            border-radius: 10px; font-size: 13px; font-weight: 600; margin-bottom: 12px;
-            display: flex; align-items: flex-start; gap: 6px; line-height: 1.4;
+        /* 按鈕群組區塊 */
+        .btn-group {
+            display: flex; flex-direction: column; gap: 8px; margin-top: 12px;
         }
 
-        .guide-content { background-color: #F0F8FF; border-radius: 12px; padding: 14px; margin-bottom: 12px; border-left: 3px solid #007AFF; }
-        .guide-text { font-size: 13.5px; color: #1C1C1E; line-height: 1.6; }
-
-        /* Google Maps 導航按鈕 */
+        /* 按鈕樣式設計 */
         .nav-btn {
             display: flex; align-items: center; justify-content: center; background-color: #4285F4;
             color: #FFFFFF; text-decoration: none; padding: 12px; border-radius: 12px;
-            font-size: 14px; font-weight: 700; transition: background 0.2s; margin-top: 5px;
+            font-size: 14px; font-weight: 700; transition: background 0.2s;
             box-shadow: 0 2px 6px rgba(66, 133, 244, 0.2);
         }
         .nav-btn:active { background-color: #3367D6; }
+        
+        /* 介紹與官網按鈕專屬樣式 (淺灰色，區別於主導航) */
+        .nav-btn.info-btn {
+            background-color: #E5E5EA;
+            color: #1C1C1E;
+            box-shadow: none;
+        }
+        .nav-btn.info-btn:active { background-color: #D1D1D6; }
 
         /* 大綱與資訊卡片 */
         .info-box { background: var(--card-bg); border-radius: var(--radius); padding: 18px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
@@ -166,7 +170,7 @@
             <p style="color:#8E8E93; font-size:13px; margin-top:8px;">*抵達台灣需轉換時區 (GMT+8) 即日本時間-1小時</p>
         </div>
         
-        <a href="https://www.starlux-airlines.com/zh-TW" target="_blank" class="nav-btn" style="background-color: #CBA052; color: #1C1C1E;">🌐 前往 星宇航空 官網</a>
+        <a href="https://www.starlux-airlines.com/zh-TW" target="_blank" class="nav-btn" style="background-color: #CBA052; color: #1C1C1E; border-radius: 12px;">🌐 前往 星宇航空 官網</a>
     </div>
 
     <!-- 4. 住宿資訊 -->
@@ -216,7 +220,8 @@
                         transit: "🚗 包車 / 約 30 分鐘"
                     },
                     { 
-                        timeRange: "16:00 ~ 17:30", jpName: "瀬長島 ウミカ지テラス", title: "瀨長島", typeName: "景點", desc: "吃東西、感受純白希臘風情自由活動。", link: "https://maps.app.goo.gl/FXw9xiQZ1z5oQUCaA",
+                        timeRange: "16:00 ~ 17:30", jpName: "瀬長島 ウミカジテラス", title: "瀨長島", typeName: "景點", desc: "吃東西、感受純白希臘風情自由活動。", link: "https://maps.app.goo.gl/FXw9xiQZ1z5oQUCaA",
+                        infoLinks:[{ text: "📖 瀨長島 景點介紹", url: "https://www.gltjp.com/zh-hant/article/item/20766/" }],
                         transit: "🚗 包車 / 約 45分~1小時"
                     },
                     { 
@@ -224,7 +229,7 @@
                         transit: "🚗 包車 / 約 10 分鐘"
                     },
                     { 
-                        timeRange: "19:10 ~ ", title: "恩納民泊 自由活動", typeName: "住宿", desc: "入住 丸公寓(丸ハウス) 或 Cozy House A，享受第一晚的悠閒時光。", link: "https://maps.app.goo.gl/rn4upqt5UwznWcrm7"
+                        timeRange: "19:10 ~ ", title: "恩納民泊 自由活動", typeName: "住宿", desc: "入住 丸公寓 或 Cozy House A，享受第一晚的悠閒時光。", link: "https://maps.app.goo.gl/rn4upqt5UwznWcrm7"
                     }
                 ]
             },
@@ -241,10 +246,12 @@
                     },
                     { 
                         timeRange: "11:30 ~ 15:00", jpName: "沖縄美ら海水族館", title: "沖繩美麗海水族館", typeName: "景點", desc: "參觀魚魚們。營業時間 08:30-18:30 (最後入館17:30)", link: "https://maps.app.goo.gl/vLiinsfqsKGXdAmk8",
+                        infoLinks:[{ text: "🌐 水族館 官方網站", url: "https://churaumi.okinawa/tc/" }],
                         transit: "🚗 包車 / 約 1小時30分鐘"
                     },
                     { 
                         timeRange: "16:30 ~ 18:30", jpName: "琉球の牛 恩納別館", title: "琉球の牛 (恩納店)", typeName: "晚餐", desc: "享用頂級燒肉！營業時間 16:30-23:00", link: "https://maps.app.goo.gl/undsYGiTd7aapxn77",
+                        infoLinks:[{ text: "🥩 官方網站 (查看菜單)", url: "https://www.u-shi.net/onna_ch.html" }],
                         transit: "🚗 包車 / 約 10 分鐘"
                     },
                     { 
@@ -265,10 +272,12 @@
                     },
                     { 
                         timeRange: "12:00 ~ 14:00", jpName: "百年古家 大家うふやー", title: "百年古家 大家阿古豬", typeName: "午餐", desc: "營業時間 11:00-15:30，品嚐道地阿古豬料理", link: "https://maps.app.goo.gl/Vuc1JSWqk7KVTXWg6",
+                        infoLinks:[{ text: "🍲 官方網站 (查看菜單)", url: "https://ufuya.com/" }],
                         transit: "🚗 包車 / 約 1小時~1小時30分鐘"
                     },
                     { 
                         timeRange: "15:00 ~ 18:00", jpName: "アメリカンビレッジ", title: "美國村", typeName: "景點", desc: "充滿異國風情的街道，購物與自由活動", link: "https://maps.app.goo.gl/WYiFMoYismy72KqC8",
+                        infoLinks:[{ text: "📖 美國村 景點介紹", url: "https://www.jathao.com/2015/10/aeon.html" }],
                         transit: "🚗 包車 / 約 30 分鐘"
                     },
                     { 
@@ -285,14 +294,20 @@
                     },
                     { 
                         timeRange: "09:10 ~ 11:10", jpName: "首里城公園 / 達磨寺", title: "首里城、西來院(達摩寺)", typeName: "景點", desc: "感受琉球王國的歷史文化，自由活動", link: "https://maps.app.goo.gl/eRUtk8WSazFFqTkC6",
+                        infoLinks:[
+                            { text: "📖 首里城 景點介紹", url: "https://www.gltjp.com/zh-hant/article/item/20342/" },
+                            { text: "📖 西來院 景點介紹", url: "https://yoke918.tw/sairaiin/" }
+                        ],
                         transit: "🚗 包車 / 約 20 分鐘"
                     },
                     { 
                         timeRange: "11:30 ~ 14:30", jpName: "国際通り", title: "國際通", typeName: "景點", desc: "那霸最熱鬧的街道，吃喝玩樂自由活動", link: "https://maps.app.goo.gl/ci2B4Veeam9YYrSH6",
+                        infoLinks:[{ text: "📖 國際通 逛街地圖", url: "https://www.jathao.com/2025/11/okinawa-kokusai-dori-street.html" }],
                         transit: "🚗 包車 / 約 15 分鐘"
                     },
                     { 
                         timeRange: "14:45 ~ 17:30", jpName: "新都心(おもろまち)", title: "新都心購物區", typeName: "購物", desc: "百貨公司與藥妝店，採買伴手禮自由活動", link: "https://maps.app.goo.gl/e7acGHAoNzUxcFw76",
+                        infoLinks:[{ text: "📖 新都心 購物介紹", url: "https://www.jathao.com/2015/10/main-placedfs-t-galleria-okinawa.html" }],
                         transit: "🚗 包車 / 約 40 分鐘"
                     },
                     { 
@@ -309,6 +324,7 @@
                     },
                     { 
                         timeRange: "09:00 ~ 11:30", jpName: "おきなわワールド", title: "沖繩文化王國", typeName: "景點", desc: "園區包含玉泉洞、王國村、毒蛇博物公園，自由參觀", link: "https://maps.app.goo.gl/Xih2w8sUzDCJpZ2WA",
+                        infoLinks:[{ text: "📖 沖繩文化王國 介紹", url: "https://okinawa.letsgojp.com/archives/757370/" }],
                         transit: "🚗 包車 / 約 30 分鐘"
                     },
                     { 
@@ -375,7 +391,7 @@
 
             const day = itineraryData[dayIndex];
             
-            document.getElementById('weather-container').innerHTML = `${day.fullDate} ｜ ${day.weather}`;
+            document.getElementById('weather-container').innerHTML = `🌤️ ${day.fullDate} ｜ ${day.weather}`;
 
             const listContainer = document.getElementById('itinerary-list');
             let eventsHtml = '';
@@ -383,10 +399,22 @@
             day.events.forEach(event => {
                 let jpHtml = event.jpName ? `<div class="jp-name">🇯🇵 ${event.jpName}</div>` : '';
                 let descHtml = event.desc ? `<div class="desc">${event.desc}</div>` : '';
-                let noticeHtml = event.notice ? `<div class="info-alert">${event.notice}</div>` : '';
-                let guideHtml = event.guideDesc ? `<div class="guide-content"><div class="guide-text">${event.guideDesc}</div></div>` : '';
-                let navBtn = event.link ? `<a href="${event.link}" target="_blank" class="nav-btn">📍 開啟 Google Maps</a>` : '';
                 
+                // 動態生成按鈕群組 (介紹官網與導航)
+                let buttonsHtml = '';
+                if (event.infoLinks || event.link) {
+                    buttonsHtml += '<div class="btn-group">';
+                    if (event.infoLinks) {
+                        event.infoLinks.forEach(link => {
+                            buttonsHtml += `<a href="${link.url}" target="_blank" class="nav-btn info-btn">${link.text}</a>`;
+                        });
+                    }
+                    if (event.link) {
+                        buttonsHtml += `<a href="${event.link}" target="_blank" class="nav-btn">📍 開啟 Google Maps</a>`;
+                    }
+                    buttonsHtml += '</div>';
+                }
+
                 eventsHtml += `
                     <div class="card">
                         <div class="card-header">
@@ -396,9 +424,7 @@
                         ${jpHtml}
                         <div class="title">${event.title}</div>
                         ${descHtml}
-                        ${noticeHtml}
-                        ${guideHtml}
-                        ${navBtn}
+                        ${buttonsHtml}
                     </div>
                 `;
                 
