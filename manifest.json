@@ -1,0 +1,16 @@
+{
+  "name": "員工旅遊-沖繩",
+  "short_name": "沖繩行",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F2F2F7",
+  "theme_color": "#F2F2F7",
+  "icons":[
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/6100/6100486.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
