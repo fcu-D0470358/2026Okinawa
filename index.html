@@ -6,9 +6,10 @@
     <title>沖繩自由行 2026</title>
     <meta name="theme-color" content="#F2F2F7">
     
-    <!-- PWA 必備設定 -->
+    <!-- PWA 必備設定 & 專屬 Icon -->
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/6100/6100486.png">
+    <link rel="icon" href="./icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="./icon.png">
     
     <style>
         /* iOS 原生極簡風格 (沖繩海濱藍) */
@@ -17,7 +18,7 @@
             --card-bg: #FFFFFF;
             --text-main: #1C1C1E;
             --text-muted: #8E8E93;
-            --accent-color: #007AFF; /* 沖繩專屬清爽藍色 */
+            --accent-color: #007AFF; 
             --radius: 20px;
         }
 
@@ -102,7 +103,7 @@
         }
         .nav-btn:active { background-color: #3367D6; }
         
-        /* 介紹與官網按鈕專屬樣式 (淺灰色，區別於主導航) */
+        /* 介紹與官網按鈕專屬樣式 */
         .nav-btn.info-btn {
             background-color: #E5E5EA;
             color: #1C1C1E;
@@ -163,7 +164,7 @@
         </div>
 
         <div class="info-box">
-            <div class="info-title">✈️ 回程：05/01 (日)</div>
+            <div class="info-title">✈️ 回程：05/01 (五)</div>
             <p><strong>航空公司：</strong> 星宇航空 (STARLUX Airlines)</p>
             <p><strong>航班號碼：</strong> JX871</p>
             <p><strong>時間：</strong> 15:50 那霸(OKA) ➔ 16:25 桃園(TPE)(T1)</p>
@@ -316,27 +317,30 @@
                 ]
             },
             {
-                dayName: "Day 5", fullDate: "05/01 (日)", weather: "☀️ 24~28°C | 降雨機率 0%",
+                dayName: "Day 5", fullDate: "05/01 (五)", weather: "☀️ 24~28°C | 降雨機率 0%",
                 events:[
                     { 
-                        timeRange: "07:45 ~ 08:00", title: "民宿 集合退房", typeName: "行程", desc: "準備出發",
-                        transit: "🚗 包車 / 約 1 小時"
+                        timeRange: "08:45 ~ 09:00", title: "民宿 集合退房", typeName: "行程", desc: "準備出發",
+                        transit: "🚗 包車 / 約 50 分鐘"
                     },
                     { 
-                        timeRange: "09:00 ~ 11:30", jpName: "おきなわワールド", title: "沖繩文化王國", typeName: "景點", desc: "園區包含玉泉洞、王國村、毒蛇博物公園，自由參觀", link: "https://maps.app.goo.gl/Xih2w8sUzDCJpZ2WA",
-                        infoLinks:[{ text: "📖 沖繩文化王國 介紹", url: "https://okinawa.letsgojp.com/archives/757370/" }],
-                        transit: "🚗 包車 / 約 30 分鐘"
+                        timeRange: "09:50 ~ 11:20", jpName: "首里城公園 / 達磨寺", title: "首里城、西來院(達摩寺)", typeName: "景點", desc: "感受琉球王國的歷史文化，自由活動", link: "https://maps.app.goo.gl/eRUtk8WSazFFqTkC6",
+                        infoLinks:[
+                            { text: "📖 首里城 景點介紹", url: "https://www.gltjp.com/zh-hant/article/item/20342/" },
+                            { text: "📖 西來院 景點介紹", url: "https://yoke918.tw/sairaiin/" }
+                        ],
+                        transit: "🚗 包車 / 約 20 分鐘"
                     },
                     { 
-                        timeRange: "12:00 ~ 13:30", title: "午餐 (地點待確認)", typeName: "午餐", desc: "享受沖繩的最後一餐",
-                        transit: "🚗 包車 / 約 20 分鐘 (*部分人員前往租車地點還車)"
+                        timeRange: "11:40 ~ 12:10", jpName: "波上宮", title: "波上宮", typeName: "景點", desc: "沖繩八社之首，建在海邊懸崖上的美麗神社，自由活動",
+                        transit: "🚗 包車 / 約 10 分鐘 (*部分人員前往租車地點還車)"
                     },
                     { 
-                        timeRange: "13:50 ~ 15:50", jpName: "那覇空港", title: "那霸機場 (T1) 辦理登機", typeName: "機場", desc: "搭乘星宇航空 JX871 準備回台灣", link: "https://maps.app.goo.gl/H8ESEiGT7oe6qbVb7",
+                        timeRange: "12:20 ~ 15:50", jpName: "那覇空港", title: "那霸機場 (T1) 自由活動與登機", typeName: "機場", desc: "預計 13:50~14:20 開櫃。搭乘星宇航空 JX871 準備回台灣", link: "https://maps.app.goo.gl/H8ESEiGT7oe6qbVb7",
                         transit: "✈️ 飛行 / 約 1小時35分鐘 (抵達台灣時區-1)"
                     },
                     { 
-                        timeRange: "16:25 ~ 17:00", title: "桃園機場 (T1) 入境", typeName: "機場", desc: "機場入境，包車接機地點待確認", link: "https://maps.app.goo.gl/CgYsyVeRDkti1FYb9",
+                        timeRange: "16:25 ~ 17:00", title: "桃園機場 (T1) 入境", typeName: "機場", desc: "機場出境，包車接機地點待確認", link: "https://maps.app.goo.gl/CgYsyVeRDkti1FYb9",
                         transit: "🚗 包車 / 約 3 小時 (清水休息站停留5分)"
                     },
                     { 
