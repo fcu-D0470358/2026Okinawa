@@ -1,5 +1,5 @@
 {
-  "name": "員工旅遊-沖繩",
+  "name": "沖繩自由行 2026",
   "short_name": "沖繩行",
   "start_url": "./index.html",
   "display": "standalone",
@@ -7,7 +7,7 @@
   "theme_color": "#F2F2F7",
   "icons":[
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/6100/6100486.png",
+      "src": "./icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
