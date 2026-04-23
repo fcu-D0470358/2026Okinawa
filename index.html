@@ -421,4 +421,113 @@
                         transit: "🚗 包車 / 約 3 小時 (清水休息站停留5分)"
                     },
                     { 
-                        timeRange: "20:00", title: "嘉義 (育人國小)", typeName: "行程", desc: "滿載而歸，快樂回家！"
+                        timeRange: "20:00", title: "嘉義 (育人國小)", typeName: "行程", desc: "滿載而歸，快樂回家！", link: "https://maps.app.goo.gl/NLmrU1odGcYcLqmD8"
+                    }
+                ]
+            }
+        ];
+
+        function switchMainTab(tabId, el) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function initOverview() {
+            const container = document.getElementById('overview-list');
+            let html = '';
+            itineraryData.forEach(day => {
+                html += `
+                    <div class="info-box" style="padding: 15px;">
+                        <div class="overview-day-title">${day.dayName} · ${day.fullDate.split(' ')[0]}</div>
+                `;
+                day.events.forEach(event => {
+                    html += `<div class="overview-item">${event.title}</div>`;
+                });
+                html += `</div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function initDateTabs() {
+            const tabsContainer = document.getElementById('date-tabs');
+            let tabsHtml = '';
+            itineraryData.forEach((day, index) => {
+                tabsHtml += `<div class="date-tab ${index === 0 ? 'active' : ''}" onclick="renderDayEvents(${index}, this)">
+                                ${day.dayName} · ${day.fullDate.split(' ')[0]}
+                             </div>`;
+            });
+            tabsContainer.innerHTML = tabsHtml;
+            renderDayEvents(0, tabsContainer.firstElementChild);
+        }
+
+        function renderDayEvents(dayIndex, clickedTabElement) {
+            if (clickedTabElement) {
+                document.querySelectorAll('.date-tab').forEach(tab => tab.classList.remove('active'));
+                clickedTabElement.classList.add('active');
+                clickedTabElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
+            const day = itineraryData[dayIndex];
+            
+            document.getElementById('weather-container').innerHTML = `🌤️ ${day.fullDate} ｜ ${day.weather}`;
+
+            const listContainer = document.getElementById('itinerary-list');
+            let eventsHtml = '';
+            
+            day.events.forEach(event => {
+                let jpHtml = event.jpName ? `<div class="jp-name">🇯🇵 ${event.jpName}</div>` : '';
+                let descHtml = event.desc ? `<div class="desc">${event.desc}</div>` : '';
+                
+                // 動態生成按鈕群組
+                let buttonsHtml = '';
+                if (event.infoLinks || event.link) {
+                    buttonsHtml += '<div class="btn-group">';
+                    if (event.infoLinks) {
+                        event.infoLinks.forEach(link => {
+                            buttonsHtml += `<a href="${link.url}" target="_blank" class="nav-btn info-btn">${link.text}</a>`;
+                        });
+                    }
+                    if (event.link) {
+                        buttonsHtml += `<a href="${event.link}" target="_blank" class="nav-btn">📍 開啟 Google Maps</a>`;
+                    }
+                    buttonsHtml += '</div>';
+                }
+
+                eventsHtml += `
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="time">${event.timeRange}</span>
+                            <span class="type-badge">${event.typeName}</span>
+                        </div>
+                        ${jpHtml}
+                        <div class="title">${event.title}</div>
+                        ${descHtml}
+                        ${buttonsHtml}
+                    </div>
+                `;
+                
+                if (event.transit) {
+                    eventsHtml += `
+                        <div class="transit-block">
+                            <div class="transit-line"></div>
+                            <div class="transit-badge">${event.transit}</div>
+                        </div>
+                    `;
+                } else {
+                    eventsHtml += `<div style="height:12px;"></div>`;
+                }
+            });
+            listContainer.innerHTML = eventsHtml;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onload = () => { 
+            initDateTabs(); 
+            initOverview();
+        };
+    </script>
+</body>
+</html>
